@@ -67,21 +67,66 @@ const Service = () => {
         "Providing detailed insights and performance reports to guide data-driven decisions.",
     },
   ];
-  return(
-    <>  
-    <div className="h-full grid grid-cols-3 gap-5"> 
-       <div className="col-span-3 text-center font-bold text-3xl">Our Services</div>
-      {services.map((service)=> (
-        <div 
-        key={service.name}
-        className="bg-gray-300 rounded-lg shadow-lg p-6 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300 ">
-          <div className="text-gray-400 mb-4">{service.icon}</div>
-          <h3 className="text-xl font-bold mb-2">{service.name}</h3>
-          <p className="text-gray-600">{service.description}</p>
+  return (
+    <div className="w-full min-h-screen bg-gray-100 py-16 px-4">
+      {/* Main Container - THIS WAS MISSING */}
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Section Title */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            Our <span className="text-red-600">Services</span>
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            We offer a wide range of professional services to help your business grow and succeed.
+          </p>
+          <div className="w-24 h-1 bg-red-600 mx-auto mt-4 rounded-full"></div>
         </div>
-      ))}
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <div 
+              key={index}
+              className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 transition-all duration-300 group border-b-4 border-transparent hover:border-red-600"
+            >
+              <div className="text-gray-400 mb-4 group-hover:text-red-600 transition-colors duration-300 transform group-hover:-translate-y-1">
+                {service.icon}
+              </div>
+              
+              <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-red-600 transition-colors duration-300">
+                {service.name}
+              </h3>
+              
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {service.description}
+              </p>
+              
+              <a href="#" className="mt-4 text-red-600 font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Learn More →
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Social Media Links - NOW INSIDE CONTAINER */}
+        <div className="flex justify-center mt-12 space-x-6">
+          <a href="#" className="text-gray-600 hover:text-red-600 transition-colors duration-300">
+            <FaFacebook size={24} />
+          </a>
+          <a href="#" className="text-gray-600 hover:text-red-600 transition-colors duration-300">
+            <FaInstagram size={24} />
+          </a>
+          <a href="#" className="text-gray-600 hover:text-red-600 transition-colors duration-300">
+            <FaTwitter size={24} />
+          </a>
+          <a href="#" className="text-gray-600 hover:text-red-600 transition-colors duration-300">
+            <FaLinkedin size={24} />
+          </a>
+        </div>
+      </div>
     </div>
-    </>
-  )
-}
+  );
+};
+
 export default Service;
