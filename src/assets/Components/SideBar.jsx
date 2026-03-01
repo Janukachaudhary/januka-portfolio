@@ -1,45 +1,51 @@
 import React from 'react'
-import robo from"../images/robo.jpg";
+import robo from "../images/robo.jpg";
 import { NavLink } from "react-router-dom";
-import { IoMdCloudDownload } from "react-icons/io";
-import { ImOffice } from 'react-icons/im';
-import myCV from "../Downloadss/CV.pdf";
 
-const linkClasses = ({ isActive }) =>`
+const linkClasses = ({ isActive }) => `
  flex items-center gap-4 px-6 py-3 rounded-lg transition-all duration-300 ${
-        isActive
-        ? "bg-white/30 shadow-lg scale-105"
-        : "hover:bg-white/20 hover:scale-105"
-    }`;
-   
+    isActive
+      ? "bg-white/30 text-black shadow-lg scale-105"
+      : "text-white hover:bg-white/20 hover:text-black hover:scale-105"
+ }`;
+
 const SideBar = () => {
   return (
-    <div className="w-80 h-screen text-white flex flex-col justify-between px-6 py-10 shadow-2xl
-    bg-linear-to-b from-gray-900 via-gray-800 to-gray-700">
-        <div className="text-center">
-            <h2 className="text-xl font-bold">JANUKA CHAUDHARY</h2>
-            <p>WEB DEVELOPER</p>
-        </div>
-        <div className='flex flex-col justify-center items-center'>
-            <img src={robo}
-             alt="myimage" className='h-35 w-35 rounded-full object-cover mt-4 ' />
-        </div>
+    <div className="w-80 h-screen flex flex-col justify-between px-6 py-10
+      bg-gradient-to-b from-gray-900 via-gray-800 to-gray-700
+      shadow-2xl backdrop-blur-lg">
+      
+      {/* Profile Section */}
+      <div className="text-center">
+        <h2 className="text-2xl font-bold mb-1 text-white">JANUKA CHAUDHARY</h2>
+        <p className="text-gray-300 text-sm">Frontend Developer</p>
+      </div>
 
-       <nav className='flex flex-col gap-1 mt-4'>
+      {/* Profile Image */}
+      <div className='flex flex-col justify-center items-center mt-4'>
+        <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-white-600 shadow-lg">
+          <img src={robo} alt="myimage" className='w-full h-full object-cover' />
+        </div>
+      </div>
+
+      {/* Navigation Links */}
+      <nav className='flex flex-col gap-2 mt-6'>
         <NavLink to="/" className={linkClasses}>Home</NavLink>
         <NavLink to="/service" className={linkClasses}>Service</NavLink>
         <NavLink to="/portfolio" className={linkClasses}>Portfolio</NavLink>
         <NavLink to="/contact" className={linkClasses}>Contact</NavLink>
-       </nav>
-         
+      </nav>
 
-         <div className='text-center mt-4'>
-          <a href={myCV}
-          download="CV"
-          className=' flex flex-row items-center px-15 bg-white text-black rounded-full py-2.5 font-bold w-full'>
-            DOWNLOAD CV <IoMdCloudDownload />
-            </a>
-         </div>
+      {/* Optional Footer / Download CV Button */}
+      <div className="mt-6 text-center">
+        <a 
+          href="/Januka_Chaudhary_CV.pdf"
+          download
+          className="flex items-center justify-center gap-2 px-6 py-3 bg-white/20 text-white rounded-full hover:bg-white/40 transition-all duration-300 shadow-md"
+        >
+          Download CV
+        </a>
+      </div>
     </div>
   );
 }
